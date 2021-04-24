@@ -1,0 +1,33 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1" >
+
+      <h2>商品詳細</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>商品画像</th>
+              <th>商品名</th>
+              <th>商品説明</th>
+              <th>税抜き価格</th>
+              <th>販売状況</th>
+              <th>登録日時</th>
+              <th>更新日時</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+           <td><%= attachment_image_tag @item, :profile_image, :fill, 40, 40, fallback: "no_image.jpg",size:"40x40"%></td>
+           <td><%= @item.name %></td>
+           <td><%= @item.introduction %></td>
+           <td><%= @item.price %></td>
+           <td><%= @item.is_active %></td>
+           <td><%= @item.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+           <td><%= @item.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>

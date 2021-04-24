@@ -3,6 +3,14 @@ class Admin::ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def show
+   @item = Item.find(params[:id])
+  end
+
   def create
     @item = Item.new(item_params)
     @item.save
@@ -12,7 +20,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-   params.require(:item).permit(:genre,:name,:image,:introduction,:price,:is_active,:created_at,:updated_at)
+   params.require(:item).permit(:name,:image,:introduction,:price,:is_active,:created_at,:updated_at)
   end
-  
+
 end

@@ -1,0 +1,65 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1" >
+
+  <h1>my_page</h1>
+
+  <%#= attachment_image_tag @customer, :profile_image, :fill, 100, 100, fallback:"no_image.jpg",size:"100x100" %>
+  <table class="table">
+  <tbody>
+  <tr>
+  <th>姓</th>
+  <th><%= @customer.last_name %></th>
+  </tr>
+  <tr>
+  <th>名</th>
+  <th><%= @customer.first_name %></th>
+  </tr>
+  <tr>
+  <th>姓カナ</th>
+  <th><%= @customer.last_name_kana %></th>
+  </tr>
+  <tr>
+  <th>名カナ</th>
+  <th><%= @customer.first_name_kana %></th>
+  </tr>
+  <tr>
+  <th>メールアドレス</th>
+  <th><%= @customer.email %></th>
+  </tr>
+  <tr>
+  <th>パスワード</th>
+  <th><%= @customer.encrypted_password %></th>
+  </tr>
+  <tr>
+  <th>郵便番号</th>
+  <th><%= @customer.postal_code %></th>
+  </tr>
+  <tr>
+  <th>住所</th>
+  <th><%= @customer.address %></th>
+  </tr>
+  <tr>
+  <th>電話番号</th>
+  <th><%= @customer.telephone_number %></th>
+  </tr>
+  <tr>
+  <th>登録日時</th>
+  <th><%= @customer.created_at %></th>
+  </tr>
+  <tr>
+  <th>更新日時</th>
+  <th><%= @customer.updated_at %></th>
+  </tr>
+  </tbody>
+  </table>
+
+  <div class="row">
+  <%#= link_to customers_edit(@customer.id),class: "btn btn-outline-secondary btn-block" ,method: :get do%>
+  <i class="fas fa-user-cog"></i> 情報編集
+  <%# end %>
+  </div>
+
+    </div>
+  </div>
+</div>

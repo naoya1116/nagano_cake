@@ -1,0 +1,36 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1" >
+
+      <h2>商品詳細</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>商品画像</th>
+              <th>商品名</th>
+              <th>商品説明</th>
+              <th>税抜き価格</th>
+              <th>販売状況</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+           <td><%= attachment_image_tag @item, :profile_image, :fill, 40, 40, fallback: "no_image.jpg",size:"40x40"%></td>
+           <td><%= @item.name %></td>
+           <td><%= @item.introduction %></td>
+           <td><%= @item.price %></td>
+           <td><%= @item.is_active %></td>
+          </tr>
+          </tbody>
+        </table>
+        
+        <%= form_with model: @cart_item do |f| %>
+        <%= f.select :amount,options_for_select(1..10), include_blank: "選択して下さい" %>
+        <%= f.submit 'カートに入れる'%>
+        <% end %>
+        
+        
+
+    </div>
+  </div>
+</div>
