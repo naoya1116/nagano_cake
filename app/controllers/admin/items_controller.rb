@@ -13,14 +13,15 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    # @item.genre_id = params[:item][:genre_id].to_i
     @item.save
-    redirect_to admin_item_path
+    redirect_to admin_item_path(@item.id)
   end
 
   private
 
   def item_params
-   params.require(:item).permit(:name,:image,:introduction,:price,:is_active,:created_at,:updated_at)
+   params.require(:item).permit(:name,:image,:introduction,:price,:is_active,:created_at,:updated_at, :genre_id)
   end
 
 end

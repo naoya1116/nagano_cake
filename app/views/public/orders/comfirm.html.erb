@@ -1,0 +1,30 @@
+<h1>注文情報確認画面</h1>
+
+<ol class="nav">
+	<li>1.入力</li>
+	<li class="current">2.確認</li>
+	<li>3.完了</li>
+</ol>
+
+<dl>
+	<dt>支払い方法</dt>
+	<dd><%= @reserve.reserve_date %></dd>
+	<dt>住所</dt>
+	<dd><%= @reserve.name %></dd>
+	<dt>備考</dt>
+	<dd><%= @reserve.note %></dd>
+</dl>
+
+<%= form_for @reserve, method: :post, url: reserve_back_path do |form| %>
+	<%= form.hidden_field :reserve_date %>
+	<%= form.hidden_field :name %>
+	<%= form.hidden_field :note %>
+	<%= form.submit '入力画面に戻る' %>
+<% end %>
+
+<%= form_for @reserve, method: :post, url: reserve_complete_path do |form| %>
+	<%= form.hidden_field :reserve_date %>
+	<%= form.hidden_field :name %>
+	<%= form.hidden_field :note %>
+	<%= form.submit '送信する' %>
+<% end %>
