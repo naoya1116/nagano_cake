@@ -1,4 +1,4 @@
-<h1>注文情報入力画面</h1>
+<h1>必要事項を入力してください</h1>
 
 <ol class="nav">
 	<li class="current">1.入力</li>
@@ -6,13 +6,64 @@
 	<li>3.完了</li>
 </ol>
 
-<%= form_with @order, method: :post, url: orders_confirm_path do |f| %>
-	<dl>
-		<dt>支払い方法</dt>
-		<dd><%= f.text_field :payment_method %></dd>
-		<dt>住所</dt>
-		<dd><%= f.text_field :address %></dd>
-	</dl>
+<%= form_with model: @order, method: :post, url: orders_confirm_path do |f| %>
+   <% if @order.errors.any? %>
+      <div class="alert text-danger">
+        <h3> <%= @order.errors.count %> 件のエラーがあります。お客様情報を入力してください。 </h3>
+        <ul>
+          <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-	<%= f.submit '確認画面へ' %>
+	<%= f.label :payment_method, "支払い方法を選択してください" %>
+	<br>
+
+	<%= f.radio_button :payment_method,:クレジットカード,  checked: "checked" %>
+	<%= f.label :payment_method, "クレジットカード" %>
+	<br>
+
+	<%= f.radio_button :payment_method, :銀行振込 %>
+	<%= f.label :payment_method, "銀行振込" %>
+	<br>
+
+	<%= f.label :address, "お届け先を選択してください" %>
+	<br>
+
+	<%= f.radio_button :address_option, 0, checked: "checked" %>
+	<%= f.label :order_address, "お客様自身" %>
+	<br>
+	氏名：<%=current_customer.last_name %><%=current_customer.first_name %>
+	<%#= f.hidden_field :name %>
+	郵便番号:<%= current_customer.postal_code %>
+	<%#= f.hidden_field :postal_code %>
+	住所:<%= current_customer.address %>
+	<%#= f.hidden_field :address %>
+	<br>
+
+	<%= f.radio_button :address_option, 1 %>
+	<%= f.label :order_address, "異なる配送先を選択" %>
+	<%= f.collection_select :address , @user.addresses.all, :id, :full_deliveries , :include_blank => "選択してください" %>
+	<br>
+
+	<%= f.radio_button :address_option, 2 %>
+	<%= f.label :order_address, "新しいお届け先" %>
+	<br>
+
+	<%= f.label :name, "氏名:" %>
+	<%= f.text_field :name %>
+	<br>
+
+	<%= f.label :postal_code, "郵便番号:" %>
+	<%= f.text_field :postal_code %>
+	<br>
+
+	<%= f.label :address, "住所:" %>
+	<%= f.text_field :address %>
+	<br>
+
+	<%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+
 <% end %>
