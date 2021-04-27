@@ -6,13 +6,16 @@ Rails.application.routes.draw do
   }
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
-    registrations: 'admin/registrations',
     passwords: 'admin/passwords'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htmlroot to: 'homes#top'
   root to: 'public/homes#top'
   get "/about" =>"public/homes#about"
+
+  devise_scope :customers do
   get "/customers/my_page" =>"public/customers#show"
+  end
+
   get "/customers/edit" =>"public/customers#edit"
   patch "/customers" =>"public/customers#update"
   get "/customers/unsubscribe" =>"public/customers#unsubscribe"
@@ -24,21 +27,23 @@ Rails.application.routes.draw do
   patch "/addresses/:id" =>"public/addresses#update"
 
   scope module: 'public' do
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      resources :cart_items, only: [:create]
+    end
   end
-  
+
   scope module: 'public' do
-    resources :cart_items, only: [:index, :destroy, :create]
+    resources :cart_items, only: [:index, :destroy]
   end
-  
+
   scope module: 'public' do
     resources :orders, only: [:new, :index, :show, :create]
   end
-  
+
   scope module: 'public' do
     resources :addresses, only: [:index, :edit, :create, :destroy]
   end
-  
+
   namespace :admin do
     get "/" =>"homes#top"
     resources :items, only: [:index, :new, :create, :show, :edit]
