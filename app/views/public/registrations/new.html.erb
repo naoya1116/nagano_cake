@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>お客様情報を入力してください</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -49,11 +49,6 @@
   <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telephone_number %><br />
-    <%= f.telephone_field :telephone_number, autofocus: true,autocomplete: "off" %>
   </div>
 
   <div class="field">
