@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_044622) do
     t.string "address"
     t.string "name"
     t.integer "shipping"
+    t.integer "total_payment"
     t.integer "payment_method", default: 0
     t.boolean "status", default: false
     t.datetime "created_at", null: false

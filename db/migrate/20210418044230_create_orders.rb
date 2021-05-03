@@ -6,11 +6,12 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :name
       t.integer :shipping
+      t.integer :total_payment
       t.integer :payment_method,       default: 0
       t.boolean :status,               default: 0
       t.timestamp :created_at
       t.timestamp :updated_at
-       
+
       t.timestamps
     end
   end
