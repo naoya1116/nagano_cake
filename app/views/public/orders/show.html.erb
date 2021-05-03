@@ -30,7 +30,7 @@
 			<th>内訳</th>
 			<td>
 			  <% @order.ordered_items.each do |item| %>
-				<%= item.name %> (<%= item.price %>円/個) ×<%= item.quantity %>個＝ 円<br>
+				<%= item.name %> (<%= item.price %>円/個) ×<%= item.amount %>個＝ 円<br>
 			  <% end %>
 			</td>
 		</tr>
@@ -41,7 +41,7 @@
 	<tbody>
 		<tr>
 			<th>商品小計</th>
-			<td><%= @order.ordered_items.sum(:price) %>円</td>
+			<td><%= @total %>円</td>
 		</tr>
 		<tr>
 			<th>配送料</th>
@@ -49,7 +49,7 @@
 		</tr>
 		<tr>
 			<th>ご請求額</th>
-			<td><%= @order.ordered_items.sum(:price) + "800" %>円</td>
+			<td><%= @total_price + "800" %>円</td>
 		</tr>
 	</tbody>
 </table>

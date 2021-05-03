@@ -6,33 +6,40 @@
       <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
 
         <div class="form-group">
-          <lable for="item_name">Name</label>
+          <lable for="item_name">商品名</label>
           <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label for="item_image" >Image</label>
-          <%= f.file_field :profile_image,class: "form-control-file" %>
+          <label for="item_image" >商品画像</label>
+          <%= f.attachment_field :image,class: "form-control-file" %>
         </div>
 
         <div class="form-group">
-          <label for="item_introduction">Introduction</label>
+          <label for="item_introduction">商品説明</label>
           <%= f.text_area :introduction, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label for="item_price">price</label>
+          <label for="item_price">価格（税抜き）</label>
           <%= f.number_field :price, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label for="item_price">ジャンルの選択</label>
+          <label for="item_price">商品ジャンルの選択</label>
          <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+        </div
+
+        <div class="form-group ">
+         <%= f.radio_button :is_active, :on_sale, checked: "checked"%>
+         <%= f.label :is_active, "販売中", {value: :"0", style: "display: inline-block;"} %>
+         <%= f.radio_button :is_active, :off_sale %>
+         <%= f.label :is_active, "売り切れ", {value: :"1", style: "display: inline-block;"} %>
         </div>
 
 
         <div class="form-group">
-          <%= f.submit '登録',class: "btn btn-success" %>
+          <%= f.submit 'この内容で登録',class: "btn btn-success" %>
         </div>
 
       <% end %>

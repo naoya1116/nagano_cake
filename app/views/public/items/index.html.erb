@@ -1,29 +1,19 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-
-
-    <div class="col-md-11 offset-md-1" >
-      </br>
-      <h2>Items</h2>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>商品画像</th>
-              <th>商品名</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @items.each do |item| %>
-            <tr>
-            <td><%= link_to item_path(item.id), method: :get do %>
-               <%= attachment_image_tag item, :image,:fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
-               <% end %>
-            </td>
-            <td><%= item.name %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-    </div>
+ <div class="jumbotron jumbotron-fluid main-img">
+    <div class="container"></div>
   </div>
- </div>
+  <h1 class="text-center" style="letter-spacing:0.15em;">商品一覧</h1>
+  <div class="border mb-4 mx-auto" style="width:10%"></div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card mb-3">
+          <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "no_image.jpg", height: "180" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.price %>円</p>
+            <%= link_to "この商品を見る", item_path(item.id), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
