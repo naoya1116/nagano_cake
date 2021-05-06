@@ -19,7 +19,9 @@
         	<%= order.name %>様
       </th>
       <th>
-      	<%= order.item.name %>
+      	<% order.order_items.all.each do |i| %>
+         <p><%= i.item.name %></p>
+        <% end %>
       </th>
       <th>
 	    <%= order.total_payment %>円

@@ -37,7 +37,7 @@
               </li>
               <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-white' %>
+                <%= link_to "ジャンル管理", admin_genres_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
                 <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-white' %>
@@ -50,10 +50,10 @@
               </li>
               <% else %>
               <li class="nav-item">
-                <%= link_to "お客様ログインはこちらから", new_customer_session_path, class: 'nav-link text-white' %>
+                <%= link_to "お客様はこちらからログインを行ってください", new_customer_session_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "管理者はこちらへ", new_admin_session_path, class: 'nav-link text-white' %>
+                <%= link_to "スタッフ用ログイン", new_admin_session_path, class: 'nav-link text-white' %>
               </li>
               <% end %>
             </ul>

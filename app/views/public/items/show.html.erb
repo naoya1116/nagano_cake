@@ -11,7 +11,7 @@
 		<h4><%= @item.price %><span>円(税抜き価格)</span></h4>
 
         <%= form_with model: @cart_item do |f| %>
-        <%= f.select :amount,options_for_select(1..10), include_blank: "個数を選択" %>
+        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数を選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit 'カートに入れる',class: 'btn btn-primary col-xs-5' %>
         <% end %>
