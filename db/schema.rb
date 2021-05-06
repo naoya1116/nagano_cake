@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_044622) do
     t.integer "item_id", null: false
     t.integer "price"
     t.integer "amount"
-    t.boolean "makeing_status", default: false
+    t.integer "makeing_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_044622) do
     t.integer "shipping"
     t.integer "total_payment"
     t.integer "payment_method", default: 0
-    t.boolean "status", default: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"

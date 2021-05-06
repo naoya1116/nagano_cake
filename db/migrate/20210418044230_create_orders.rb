@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.integer :shipping
       t.integer :total_payment
       t.integer :payment_method,       default: 0
-      t.boolean :status,               default: 0
+      t.integer :status,               default: 0
       t.timestamp :created_at
       t.timestamp :updated_at
 

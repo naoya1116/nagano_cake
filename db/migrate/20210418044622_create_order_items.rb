@@ -5,7 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.0]
       t.references :item, foreign_key: true,  null: false
       t.integer :price
       t.integer :amount
-      t.boolean :makeing_status,       default: 0
+      t.integer :makeing_status,  default: 0
       t.timestamp :created_at
       t.timestamp :updated_at
 
