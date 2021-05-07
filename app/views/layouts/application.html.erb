@@ -22,9 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
               <li class="nav-item">
-                <%= link_to items_path,class: 'nav-link text-white',method: :get do %>
-                <i class="fas fa-store-alt"></i>商品一覧ページへ
-                <% end %>
+                <%= link_to "商品一覧ページへ", items_path, class: "nav-link fas fa-store-alt" %>
               </li>
               <li class="nav-item">
                 <%= link_to "マイページ", customers_my_page_path, class: "nav-link fas fa-user" %>
@@ -33,7 +31,7 @@
                 <%= link_to "カート一覧", cart_items_path, class: "nav-link fas fa-shopping-cart" %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-white' %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link' %>
               </li>
               <% elsif admin_signed_in? %>
               <li class="nav-item">
@@ -43,7 +41,7 @@
                 <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%#= link_to "注文履歴一覧", admin_order_path, class: "nav-link fas fas-folder-open" %>
+                <%= link_to "注文履歴一覧", admin_path, class: "nav-link text-white" %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-white' %>

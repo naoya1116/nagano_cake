@@ -1,0 +1,47 @@
+<h1>受注詳細 </h1>
+
+<div>購入者 : <%= @order.name %></div>
+
+<div>配送先 ：<%= @order.address %></div>
+
+<div>支払い方法 :
+<%= @order.payment_method %>
+</div>
+
+注文ステータス :
+<%= form_with model: @order, url: {controller: 'orders', action: 'update' } do |f| %>
+  <%= f.select :status, Order.statuses.keys %>
+  <%= f.submit %>
+<% end %>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @order_item.each do |order_item| %>
+            <tr>
+                <td><%= order_item.item.name %></td>
+                <td><%= order_item.item.price %></td>
+                <td><%= order_item.amount %></td>
+                <td><%= order_item.item.price * order_item.amount %></td>
+                <%= form_with model: order_item, url: {controller: 'order_details', action: 'update' } do |f| %>
+                  <td><%= f.select :makeing_status, OrderItem.makeing_statuses.keys %>
+                  <%= f.hidden_field :order_item_id, :value => order_item.id %>
+                  <%= f.submit '製作状況を変更する' %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<div>商品合計 : <%= @total %></div>
+<div>送料 : <%= @order.shipping %></div>
+<div>請求合計金額 : <%= @total + @order.shipping %></div>
