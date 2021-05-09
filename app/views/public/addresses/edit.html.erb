@@ -1,0 +1,24 @@
+<div class="edit-container" style="width:50%; margin: 20px auto;">
+
+  <h3>配送先編集</h3>
+
+  <%= form_with model: @address do |f| %>
+    <table class="table table-bordered">
+      <tr>
+	    <td>郵便番号</td>
+	    <td><%= f.text_field :postal_code, autofocus: true %></td>
+	  </tr>
+	  <tr>
+	    <td>住所</td>
+	    <td><%= f.text_field :address, autofocus: true, style: "width: 80%;" %></td>
+	  </tr>
+	  <tr>
+	    <td>宛先</td>
+	    <td><%= f.text_field :name, autofocus: true %></td>
+	  </tr>
+    </table>
+
+    <%= f.submit "編集する", class:"btn btn-primary btn-md" %>
+  <% end %>
+
+</div>

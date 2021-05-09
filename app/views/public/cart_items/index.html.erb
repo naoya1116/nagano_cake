@@ -34,6 +34,7 @@
   </div>
 
   <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  <%= link_to "買い物を続ける", items_path, class: "btn btn-primary mt-5" %>
 <% else %>
   <div>現在カートに商品がありません</div>
   <%= link_to "買い物を続ける", items_path, class: "btn btn-primary mt-5" %>

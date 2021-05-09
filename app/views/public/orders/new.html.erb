@@ -24,19 +24,15 @@
 			</div>
 
 			氏名：<%=current_customer.last_name %><%=current_customer.first_name %><br  />
-			<%#= f.hidden_field :name, :value => current_customer.last_name+current_customer.first_name  %>
 			郵便番号:<%= current_customer.postal_code %><br  />
-			<%#= f.hidden_field :postal_code,:value => current_customer.postal_code %>
 			住所:<%= current_customer.address %>
-			<%#= f.hidden_field :address,:value =>current_customer.address %>
-
 
 		  <div class="radio">
 			<%= f.radio_button :address_select, 1 %>
 			<%= f.label :address_select, "登録済み住所から選択" %>
 			</div>
 
-			<%= f.collection_select :deliver , @user.addresses.all, :id, :full_deliveries , :include_blank => "選択してください" %>
+			<%= f.collection_select :deliver , @user.addresses, :id, :full_deliveries , :include_blank => "選択してください" %>
 
 		  <div class="radio">
 			<%= f.radio_button :address_select, 2 %>

@@ -1,0 +1,30 @@
+<div class="row" style="width:60%; margin:0 auto;">
+<h4>会員一覧画面</h4>
+
+<table class="table table-bordered">
+	<tr>
+		<th>顧客ID</th>
+		<th>氏名</th>
+		<th>フリガナ</th>
+		<th>メールアドレス</th>
+		<th>ステータス</th>
+	</tr>
+	<% @customers.each do |customer| %>
+	<tr>
+		<td><%= customer.id %></td>
+		<td>
+			<%= link_to admin_customer_path(customer.id) do %>
+				<%= customer.last_name %> <%= customer.first_name %>
+			<% end %>
+		</td>
+		<td><%= customer.last_name_kana %> <%= customer.first_name_kana %></td>
+		<td><%= customer.email %></td>
+		<!--<%# if customer.delete == false %>-->
+		<!--	<td><span class="badge" style="background:green">会員</span></td>-->
+		<!--<%# else %>-->
+		<!--	<td><span class="badge" style="background:red">退会済み</span></td>-->
+		<!--<%# end %>-->
+	</tr>
+	<% end %>
+</table>
+</div>

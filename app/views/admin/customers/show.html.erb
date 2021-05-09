@@ -1,0 +1,50 @@
+<div class="show-container" style="width:50%; margin: 20px auto;">
+
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">会員詳細画面</h4>
+
+<table class="table table-condensed">
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">顧客ID</th>
+		<td>
+		<!--<%#= @user.id %>-->
+		<!--	<%# if @user.is_deleted? %>-->
+		<!--			<span class="badge" style="background:#d72238;">退会済</span>-->
+		<!--	<%# else %>-->
+		<!--			<span class="badge" style="background:#8bce9a;">有効会員</span>-->
+		<!--	<%# end %>-->
+		</td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">氏名</th>
+		<td><%= @customer.last_name %> <%= @customer.first_name %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">フリガナ</th>
+		<td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">郵便番号</th>
+		<td>〒<%= @customer.postal_code %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">住所</th>
+		<td><%= @customer.address %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">電話番号</th>
+		<td><%= @customer.telephone_number %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">メールアドレス</th>
+		<td style="border-bottom: 1px solid #dad7d7;"><%= @customer.email %></td>
+	</tr>
+</table>
+<hr>
+		<%= link_to edit_admin_customer_path(@customer.id) do %>
+					<span class="btn btn-info" style="display:inline-block;">編集する</span>
+		<% end %>
+		<%= link_to admin_path do %>
+					<span class="btn btn-success" style="display:inline-block;">受注一覧</span>
+		<% end %>
+
+</div>
