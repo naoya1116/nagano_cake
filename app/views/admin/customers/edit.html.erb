@@ -2,7 +2,7 @@
 
 <%= form_with model: @customer, url:admin_customer_path, method: :PATCH do |f| %>
 <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">
-  <%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h4>
+  <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
   <label>会員ID</label>
     <%= @customer.id %>
 <div class="form-group">
@@ -36,16 +36,9 @@
     <label>メールアドレス</label>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-    <!--<%# if @user.is_deleted? %>-->
-    <!--   <%#= link_to toggle_admins_user_path(@user), method: :patch do %>-->
-    <!--      <span class="btn btn-info">会員にする</span>-->
-    <!--   <%# end %>-->
-    <!--<%# else %>-->
-    <!--   <%#= link_to toggle_admins_user_path(@user), method: :patch, data: { confirm: '本当に退会させますか？' } do %>-->
-    <!--        <span class="btn btn-danger">退会させる</span>-->
-    <!--   <%# end %>-->
-    <!--<%# end %>-->
-        <hr>
+
+    <%= f.select :is_active, Customer.is_actives.keys %>
+
     <div class="btn-group" style="width: 50%; height: 100px; margin: 0 auto; display: block;">
       <%= link_to '会員詳細に戻る', admin_customer_path(@customer.id), class:"btn btn-default", style:"display:inline-block;" %>
       <%= f.submit "変更を保存する", class:"btn btn-success", style:"display:inline-block;" %>

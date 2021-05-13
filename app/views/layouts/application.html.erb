@@ -14,7 +14,7 @@
     <header class="shadow-sm bg-dark">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand text-white p-3"><span>ながのCAKE </span></a>
+          <%= link_to "ながのCAKE", items_path, class: "navbar-brand bg-info text-white p-3" %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -54,10 +54,13 @@
               </li>
               <% else %>
               <li class="nav-item">
-                <%= link_to "サイトについて", about_path, class: "nav-link fas fa-eject text-white" %>
+                <%= link_to "ログインを行ってください", new_customer_session_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "お客様用ログイン", new_customer_session_path, class: 'nav-link text-white' %>
+                <%= link_to "新規登録をまだされていない方はこちらから", new_customer_registration_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "サイト説明", about_path, class: "nav-link  text-white" %>
               </li>
               <li class="nav-item">
                 <%= link_to "スタッフ用ログイン", new_admin_session_path, class: 'nav-link text-white' %>

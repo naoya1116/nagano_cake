@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
    before_action :cart_item_any?, only: [:new, :confirm]
 
+   #ログインしていれば閲覧可
+   before_action :authenticate_customer!
+
   def new
     @user = current_customer
   end
@@ -80,7 +83,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-
   end
 
   private

@@ -19,11 +19,11 @@
 		</td>
 		<td><%= customer.last_name_kana %> <%= customer.first_name_kana %></td>
 		<td><%= customer.email %></td>
-		<!--<%# if customer.delete == false %>-->
-		<!--	<td><span class="badge" style="background:green">会員</span></td>-->
-		<!--<%# else %>-->
-		<!--	<td><span class="badge" style="background:red">退会済み</span></td>-->
-		<!--<%# end %>-->
+		<% if customer.is_active == "有効会員" %>
+			<td><span class="badge" style="background:green">有効会員</span></td>
+		<% else %>
+			<td><span class="badge" style="background:red">退会済み</span></td>
+		<% end %>
 	</tr>
 	<% end %>
 </table>

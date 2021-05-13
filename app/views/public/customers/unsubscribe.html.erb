@@ -8,6 +8,9 @@
 			</div>
 
 			<%= link_to "退会しない", items_path, class: "btn btn-primary"%>
+
+			<% if customer_signed_in? && current_customer.id %>
 			<%= link_to "退会する", customers_withdraw_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn btn-danger" %>
+			<% end %>
 	</div>
 </div>

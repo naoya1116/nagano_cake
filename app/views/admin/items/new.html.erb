@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label for="item_image" >商品画像</label>
-          <%= f.attachment_field :image,class: "form-control-file" %>
+          <%= f.attachment_field :image, class: "form-control-file" %>
         </div>
 
         <div class="form-group">
@@ -27,16 +27,13 @@
 
         <div class="form-group">
           <label for="item_price">商品ジャンルの選択</label>
-         <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+         <%= f.collection_select :genre_id, Genre.where(is_enabled: true), :id, :name %>
         </div
 
         <div class="form-group ">
-         <%= f.radio_button :is_active, :on_sale, checked: "checked"%>
-         <%= f.label :is_active, "販売中", {value: :"0", style: "display: inline-block;"} %>
-         <%= f.radio_button :is_active, :off_sale %>
-         <%= f.label :is_active, "売り切れ", {value: :"1", style: "display: inline-block;"} %>
+         <label class="col-sm-2 control-label">販売ステータス</label>
+        <%= f.select :is_active,{販売中:true, 販売停止:false} %>
         </div>
-
 
         <div class="form-group">
           <%= f.submit 'この内容で登録',class: "btn btn-success" %>

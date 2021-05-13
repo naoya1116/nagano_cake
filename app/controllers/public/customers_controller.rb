@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+   before_action :authenticate_customer!
 
   def show
    @customer = current_customer
@@ -20,16 +21,23 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-
   end
 
   def withdraw
-
+    @customer = current_customer
+    #現在ログインしているユーザーを@customerに格納
+    @customer.update(is_active: "退会済み" )
+    #updateで登録情報を退会済みに変更
+    reset_session
+    #sessionIDのresetを行う
+    redirect_to root_path
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    #指定されたrootへのpath
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number)
+    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:is_active)
   end
 end

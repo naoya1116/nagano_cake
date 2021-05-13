@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @order = Order.find(params[:id])
     @order_item = @order.order_items
@@ -15,9 +16,9 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
 
     #注文ステータスが"入金確認"になったら製作ステータスを"製作待ち"
-    if params[:order][:status] == "1"
+    if params[:order][:status] == "入金確認"
       order.order_items.each do |order_item|
-        order_item.makeing_status = "1"
+        order_item.makeing_status = "製作待ち"
         order_item.update(makeing_status: order_item.makeing_status)
       end
     end
