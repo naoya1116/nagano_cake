@@ -8,8 +8,10 @@
 <%= @order.payment_method %>
 </div>
 
+<!--{controller: 'orders', action: 'update' }-->
+
 注文ステータス :
-<%= form_with model: @order, url: {controller: 'orders', action: 'update' } do |f| %>
+<%= form_with model: @order, url: admin_order_path, method: :PATCH  do |f| %>
   <%= f.select :status, Order.statuses.keys %>
   <%= f.submit %>
 <% end %>

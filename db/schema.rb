@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_044622) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_enabled", default: true, null: false
   end
 
   create_table "items", force: :cascade do |t|
